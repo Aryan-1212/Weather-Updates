@@ -1,0 +1,228 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.section1{
+    background-color: #3498db;
+    width: 100%;
+}
+.head{
+    height: 100px;
+    text-align: center;
+    font-size: 30px;
+    padding-top: 20px;
+}
+.head h1{
+    margin: 0;
+}
+
+.vr{
+    height: 150px;
+    border: 1px solid black;
+}
+
+
+.section2{
+    height: 500px;
+    background-color: white;
+}
+.section2 .note{
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.section2 h2{
+    margin: 0%;
+}
+.section2 .citySelect{
+    display: flex;
+    height: 280px;
+    justify-items: center;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 35px;
+    /* background-color: whitesmoke; */
+}
+.selectCity{
+    background-color: whitesmoke;
+    border: 1px solid black;
+    padding: 30px;
+    border-radius: 10px;
+}
+.selectState{
+    background-color: whitesmoke;
+    border: 1px solid black;
+    padding: 30px;
+    border-radius: 10px;
+}
+label{
+    font-weight: bold;
+}
+select{
+    padding: 10px;
+    width: 250px;
+    border-style: none;
+    border-bottom: 1px solid black;
+}
+ .find{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+.find button{
+    padding: 10px 80px;
+    border-radius: 10px;
+    font-size: 20px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+.find button:hover{
+    background-color: greenyellow;
+    border-color: green;
+    transition-duration: 0.7s;
+}
+
+
+#previousSection3{
+    width: 100%;
+    height: 500px;
+    display: none;
+}
+#loader {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 120px;
+    height: 120px;
+    margin: -76px 0 0 -76px;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+  }
+  
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+
+
+.section3{
+    display: none;
+    height: 600px;
+    background-image: url('section1.jpg');
+    background-size: 100% 100%;
+    width: 100%;
+}
+
+.section3 .dataDetails{
+    height: 100px;
+    font-size: 25px;
+    text-align: center;
+}
+.section3 .dataDetails h2{
+    padding-top: 20px;
+}
+
+.section3 .dataDetails h6{
+    margin-top: -20px;
+    padding: 10px;
+    
+}
+
+.allData{
+    width: 100%;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    justify-items: center;
+}
+
+.data{
+    background-color: whitesmoke;
+    border-radius: 20px;
+    width: 20%;
+    height: 400px;
+}
+
+.data .time{
+    width: 100%;
+    border: 1px outset black;
+    background-color: #8fd7c7;
+    border-radius: 20px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.data .image{
+    width: 100%;
+    height: 150px;
+    background-size: 100% 100%;
+}
+
+.data .details{
+    background-color: #8fd7c7;
+    border-radius: 20px;
+    border: 1px outset black;
+    width: 100%;
+    height: 200px;
+}
+
+.data .details .detail{
+    margin-top: 10px;
+    font-size: 23px;
+    margin-left: 20px;
+}
+
+.data .details .detail p{
+    display: inline;
+}
+
+
+.section4{
+    margin-top: 50px;
+    height: 200px;
+    background-color: #3498db;
+    color: black;
+    display: flex;
+    align-items: center;
+}
+
+.section4 .footer{
+    width: 60%;
+    margin: auto;
+    height: 150px;
+    display: flex;
+    justify-content:space-evenly;
+    justify-items: center;
+    align-items: center;
+    font-size: 20px;
+}
+ul{
+    list-style-type: none;
+}
+.section4 .footer .links a{
+    text-decoration: none;
+    color: black;
+}
+.section4 .footer .links a:hover{
+    color: white;
+    transition-duration: 0.7s;
+}

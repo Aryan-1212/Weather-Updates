@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2250%22 fill=%22%230058ff%22></rect><path fill=%22%23fff%22 d=%22M72.15 21.33L72.15 21.33Q74.49 22.50 74.90 25.02Q75.30 27.54 73.59 29.61L73.59 29.61Q72.42 31.23 70.58 31.41Q68.73 31.59 66.84 30.69L66.84 30.69Q64.68 29.70 62.30 29.16Q59.91 28.62 57.30 28.62L57.30 28.62Q52.44 28.62 48.62 30.15Q44.79 31.68 42.09 34.52Q39.39 37.35 38.00 41.22Q36.60 45.09 36.60 49.77L36.60 49.77Q36.60 55.26 38.18 59.31Q39.75 63.36 42.54 66.06Q45.33 68.76 49.11 70.07Q52.89 71.37 57.30 71.37L57.30 71.37Q59.73 71.37 62.16 70.92Q64.59 70.47 66.84 69.30L66.84 69.30Q68.73 68.40 70.58 68.67Q72.42 68.94 73.68 70.56L73.68 70.56Q75.48 72.81 74.99 75.20Q74.49 77.58 72.24 78.66L72.24 78.66Q69.90 79.83 67.43 80.60Q64.95 81.36 62.43 81.77Q59.91 82.17 57.30 82.17L57.30 82.17Q50.82 82.17 45.02 80.10Q39.21 78.03 34.67 73.98Q30.12 69.93 27.51 63.86Q24.90 57.78 24.90 49.77L24.90 49.77Q24.90 42.84 27.29 36.99Q29.67 31.14 34.04 26.87Q38.40 22.59 44.34 20.21Q50.28 17.82 57.30 17.82L57.30 17.82Q61.26 17.82 65.04 18.72Q68.82 19.62 72.15 21.33Z%22></path></svg>" />
+    <meta charset="UTF-8">
+    <meta http-equiv=“Pragma” content=”no-cache”>
+    <meta http-equiv=“Expires” content=”-1″>
+    <meta http-equiv=“CACHE-CONTROL” content=”NO-CACHE”>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Updates</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="section1">
+        <div class="head">
+            <h1>Weather Updates</h1>
+        </div>
+    </div>
+
+    <div class="section2">
+        <div class="note">
+            <h2>Select State and City to know the Weather!</h2>
+        </div>
+        <div class="citySelect">
+            <div class="selectState">
+                <form>
+                    <label for="state">Select State:</label>
+                    <select id="state" onchange="populateCities()">
+                        <option value="andhraPradesh">Andhra Pradesh</option>
+                        <option value="arunachalPradesh">Arunachal Pradesh</option>
+                        <option value="assam">Assam</option>
+                        <option value="bihar">Bihar</option>
+                        <option value="chhattisgarh">Chhattisgarh</option>
+                        <option value="goa">Goa</option>
+                        <option value="gujarat" selected>Gujarat</option>
+                        <option value="haryana">Haryana</option>
+                        <option value="himachalPradesh">Himachal Pradesh</option>
+                        <option value="jharkhand">Jharkhand</option>
+                        <option value="karnataka">Karnataka</option>
+                        <option value="kerala">Kerala</option>
+                        <option value="madhyaPradesh">Madhya Pradesh</option>
+                        <option value="maharashtra">Maharashtra</option>
+                        <option value="manipur">Manipur</option>
+                        <option value="meghalaya">Meghalaya</option>
+                        <option value="mizoram">Mizoram</option>
+                        <option value="nagaland">Nagaland</option>
+                        <option value="odisha">Odisha</option>
+                        <option value="punjab">Punjab</option>
+                        <option value="rajasthan">Rajasthan</option>
+                        <option value="sikkim">Sikkim</option>
+                        <option value="tamilNadu">Tamil Nadu</option>
+                        <option value="telangana">Telangana</option>
+                        <option value="tripura">Tripura</option>
+                        <option value="uttarPradesh">Uttar Pradesh</option>
+                        <option value="uttarakhand">Uttarakhand</option>
+                        <option value="westBengal">West Bengal</option>
+                        <!-- Add more state options here -->
+                    </select>
+                </form>
+            </div>
+            <div class="vr"></div>
+
+            <div class="selectCity">
+                <form>
+                    <label for="city">Select City:</label>
+                    <select id="city">
+                        <!-- Cities will be dynamically populated here -->
+                    </select>
+                </form>
+            </div>
+        </div>
+        <div class="find">
+            <button onclick="getWeather()">
+                Find
+            </button>
+        </div>
+    </div>
+
+    <div id="previousSection3">
+        <div id="loader"></div>
+    </div>
+    <div class="section3" id="section3">
+        
+        <div class="dataDetails">
+            <h2 id="cityStateDetails"></h2>
+            <h6>Note - These weather updates are based on UTC time.</h6>
+        </div>
+
+        <div class="allData">
+            <div class="data">
+                <div class="time">
+                    <h2 class="weather-time"></h2>
+                </div>
+                <div class="image weather-image"></div>
+                <div class="details">
+                    <div class="detail">
+                        <p>Weather - </p>
+                        <p class="weather"></p>
+                    </div>
+                    <div class="detail">
+                        <p>Temprature - </p>
+                        <p class="temprature"></p>
+                    </div>
+                    <div class="detail">
+                        <p>Humidity - </p>
+                        <p class="humidity"></p>
+                    </div>
+                    <div class="detail">
+                        <p>Wind Speed - </p>
+                        <p class="wind_speed"></p>
+                    </div>
+                    <div class="detail">
+                        <p>Wind Direction - </p>
+                        <p class="wind_direction"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="data">
+                <div class="time">
+                    <h2 class="weather-time"></h2>
+                </div>
+                <div class="image weather-image"></div>
+                <div class="details">
+                    <div class="detail">
+                        <p>Weather - </p>
+                        <p class="weather"></p>
+                    </div>
+                    <div class="detail">
+                        <p>Temprature - </p>
+                        <p class="temprature"></p>
+                    </div>
+                    <div class="detail">
+                        <p>Humidity - </p>
+                        <p class="humidity"></p>
+                    </div>
+                    <div class="detail">
+                        <p>Wind Speed - </p>
+                        <p class="wind_speed"></p>
+                    </div>
+                    <div class="detail">
+                        <p>Wind Direction - </p>
+                        <p class="wind_direction"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="data">
+                <div class="time">
+                    <h2 class="weather-time"></h2>
+                </div>
+                <div class="image weather-image"></div>
+                <div class="details">
+                    <div class="detail">
+                        <p>Weather - </p>
+                        <p class="weather"></p>
+                    </div>
+                    <div class="detail">
+                        <p>Temprature - </p>
+                        <p class="temprature"></p>
+                    </div>
+                    <div class="detail">
+                        <p>Humidity - </p>
+                        <p class="humidity"></p>
+                    </div>
+                    <div class="detail">
+                        <p>Wind Speed - </p>
+                        <p class="wind_speed"></p>
+                    </div>
+                    <div class="detail">
+                        <p>Wind Direction - </p>
+                        <p class="wind_direction"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="data">
+                <div class="time">
+                    <h2 class="weather-time"></h2>
+                </div>
+                <div class="image weather-image"></div>
+                <div class="details">
+                    <div class="detail">
+                        <p>Weather - </p>
+                        <p class="weather"></p>
+                    </div>
+                    <div class="detail">
+                        <p>Temprature - </p>
+                        <p class="temprature"></p>
+                    </div>
+                    <div class="detail">
+                        <p>Humidity - </p>
+                        <p class="humidity"></p>
+                    </div>
+                    <div class="detail">
+                        <p>Wind Speed - </p>
+                        <p class="wind_speed"></p>
+                    </div>
+                    <div class="detail">
+                        <p>Wind Direction - </p>
+                        <p class="wind_direction"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section4">
+        <div class="footer">
+            <div class="contact-me">
+                
+                <ul>
+                    <li><h3>Contact Me-</h3></li>
+                    <li>Email: aryanparvani12@gmail.com</li>
+                    <li>Address: LJ Polytechnic</li>
+                </ul>
+            </div>
+            <div class="links">
+                
+                <ul>
+                    <li><h3>Social Links-</h3></li>
+                    <li><a href="https://www.instagram.com/aryan_parvani/" target="_blank">Instagram</a></li>
+                    <li><a href="https://www.linkedin.com/in/aryan-parvani-1a1b0b250" target="_blank">LinkdIn</a></li>
+                    <li><a href="https://www.facebook.com/aryan.parvani" target="_blank">Facebook</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        const citiesByState = {
+            andhraPradesh: ["Hyderabad", "Visakhapatnam", "Vijayawada", "Guntur"],
+            arunachalPradesh: ["Itanagar", "Naharlagun"],
+            assam: ["Guwahati", "Silchar", "Dibrugarh", "Jorhat"],
+            bihar: ["Patna", "Gaya", "Muzaffarpur", "Bhagalpur"],
+            chhattisgarh: ["Raipur", "Bilaspur", "Durg", "Rajnandgaon"],
+            goa: ["Panaji", "Margao", "Vasco da Gama"],
+            gujarat: ["Ahmedabad", "Surat", "Vadodara", "Rajkot"],
+            haryana: ["Chandigarh", "Faridabad", "Gurugram", "Hisar"],
+            himachalPradesh: ["Shimla", "Mandi", "Dharamshala"],
+            jharkhand: ["Ranchi", "Jamshedpur", "Dhanbad"],
+            karnataka: ["Bangalore", "Mysore", "Hubli", "Belgaum"],
+            kerala: ["Thiruvananthapuram", "Kochi", "Kozhikode", "Thrissur"],
+            madhyaPradesh: ["Bhopal", "Indore", "Gwalior", "Jabalpur"],
+            maharashtra: ["Mumbai", "Pune", "Nagpur", "Nashik"],
+            manipur: ["Imphal"],
+            meghalaya: ["Shillong", "Tura"],
+            mizoram: ["Aizawl"],
+            nagaland: ["Kohima", "Dimapur"],
+            odisha: ["Bhubaneswar", "Cuttack", "Rourkela"],
+            punjab: ["Chandigarh", "Ludhiana", "Amritsar"],
+            rajasthan: ["Jaipur", "Jodhpur", "Udaipur", "Kota"],
+            sikkim: ["Gangtok"],
+            tamilNadu: ["Chennai", "Coimbatore", "Madurai", "Salem"],
+            telangana: ["Hyderabad", "Warangal", "Karimnagar"],
+            tripura: ["Agartala"],
+            uttarPradesh: ["Lucknow", "Kanpur", "Agra", "Varanasi"],
+            uttarakhand: ["Dehradun", "Haridwar", "Nainital"],
+            westBengal: ["Kolkata", "Howrah", "Durgapur", "Siliguri"]
+        };
+
+        function populateCities() {
+            const stateSelect = document.getElementById("state");
+            const citySelect = document.getElementById("city");
+            const selectedState = stateSelect.value;
+            const cities = citiesByState[selectedState];
+
+            // Clear previous city options
+            citySelect.innerHTML = "";
+
+            // Populate cities for the selected state
+            for (const city of cities) {
+                const option = document.createElement("option");
+                option.value = city;
+                option.textContent = city;
+                citySelect.appendChild(option);
+            }
+        }
+
+        // Populate initial cities based on default state
+        populateCities();
+    </script>
+    <script src="main.js"></script>
+</body>
+
+</html>
